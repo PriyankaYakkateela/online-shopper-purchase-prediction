@@ -1,0 +1,9 @@
+Features,Model,P @ rule recall (0.78),P @ recall 0.80,P @ recall 0.50
+Full,Logistic Regression,0.4599,0.4359,0.6901
+Full,Decision Tree,0.5645,0.5359,0.7215
+Full,Random Forest,0.5527,0.5475,0.7878
+Full,SVM (RBF),0.5219,0.4912,0.6875
+No PageValues,Logistic Regression,0.2401,0.2391,0.3328
+No PageValues,Decision Tree,0.2409,0.234,0.2898
+No PageValues,Random Forest,0.2647,0.2606,0.3422
+No PageValues,SVM (RBF),0.25,0.2441,0.3156

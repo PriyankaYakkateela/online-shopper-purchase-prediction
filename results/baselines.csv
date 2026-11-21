@@ -1,0 +1,5 @@
+Model,PR-AUC,ROC-AUC,Precision,Recall,F1
+Majority class,0.155,0.5,0.0,0.0,0.0
+Stratified dummy,,,0.159,0.16,0.159
+Rule: PageValues > 0,,,0.555,0.78,0.649
+PageValues-only LR,0.583,0.847,0.556,0.767,0.645

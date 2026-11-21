@@ -79,11 +79,20 @@ online-shopper-purchase-prediction/
 ├── .gitignore                      # Excludes .venv, checkpoints, data files
 ├── data/
 │   └── README.md                   # Dataset source and download instructions
-└── notebooks/
-    └── Online_Shopper_EDA.ipynb    # Exploratory data analysis
+├── notebooks/
+│   └── Online_Shopper_EDA.ipynb    # Part A: EDA (Milestone 1) | Part B: modelling and evaluation (Milestone 2)
+└── results/                        # written by Part B of the notebook
+    ├── model_results.csv           # CV and test metrics, full and no-PageValues
+    ├── baselines.csv               # majority, stratified, PageValues > 0 rule, PageValues-only LR
+    ├── significance_tests.csv      # 5x5 CV corrected t-tests and paired bootstrap
+    ├── operating_points.csv        # precision at fixed recall
+    ├── class_weighting.csv, duplicates_sensitivity.csv
+    ├── complexity_curves.csv, permutation_importance.csv
+    ├── fig1_pr_curves.png
+    ├── fig2_permutation_importance.png
+    ├── fig3_cv_ablation.png
+    └── fig4_complexity_curves.png
 
-
-Model training code (src/) will be added in the modelling phase.
 
 ## 8. How to Run
 
@@ -94,6 +103,7 @@ python -m venv .venv
 .venv\Scripts\activate          # Windows  (macOS/Linux: source .venv/bin/activate)
 pip install -r requirements.txt
 jupyter notebook notebooks/Online_Shopper_EDA.ipynb
+# then Kernel > Restart & Run All (~15 min); results are written to results/
 
 
 ## 9. Tools and Technologies
@@ -114,7 +124,20 @@ This research will compare multiple supervised machine learning models for predi
 
 ## 11. Reproducibility
 
-The repository includes the dataset source, Python environment requirements and the exploratory data analysis notebook. A fixed random seed and identical train/test split are used for all experiments. Model development steps and evaluation results will be added as the experiments are completed, and all reported results come from executed code.
+The repository includes the dataset source, Python environment requirements and the exploratory data analysis notebook. A fixed random seed and identical train/test split are used for all experiments. Modelling is in Part B of the notebook, and every number in the Milestone 2 report is saved by it to `results/`.
+
+## Preliminary Results (Milestone 2)
+
+| Model | CV PR-AUC (full) | Test PR-AUC (full) | CV PR-AUC (no PageValues) | Test PR-AUC (no PageValues) |
+|---|---|---|---|---|
+| Majority class | 0.155 | 0.155 | - | - |
+| PageValues-only LR | 0.643 | 0.583 | - | - |
+| Logistic Regression | 0.657 | 0.621 | 0.337 | 0.332 |
+| Decision Tree | 0.716 | 0.699 | 0.331 | 0.328 |
+| Random Forest | 0.755 | 0.739 | 0.388 | 0.360 |
+| SVM (RBF) | 0.695 | 0.667 | 0.348 | 0.326 |
+
+Removing PageValues roughly halves PR-AUC for every model. The one-line rule "purchase if PageValues > 0" reaches test F1 0.649 (Random Forest: 0.659). Without PageValues, the Random Forest's lead over Logistic Regression (+0.047 in 5x5 CV) is not distinguishable from zero on the test set (paired bootstrap 95% CI [-0.001, 0.054]).
 
 ## 12. Author
 

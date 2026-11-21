@@ -1,0 +1,9 @@
+Model,Features,With duplicates,Without,Change
+Logistic Regression,Full,0.6571,0.6467,-0.0104
+Decision Tree,Full,0.7156,0.7179,0.0023
+Random Forest,Full,0.7551,0.7534,-0.0017
+SVM (RBF),Full,0.6947,0.6944,-0.0003
+Logistic Regression,No PageValues,0.3374,0.3422,0.0048
+Decision Tree,No PageValues,0.3314,0.3286,-0.0028
+Random Forest,No PageValues,0.3876,0.3857,-0.0018
+SVM (RBF),No PageValues,0.3481,0.3469,-0.0013

@@ -1,9 +1,10 @@
+# Replace each line with your installed version, e.g. pandas==3.1.1
+# Windows: pip freeze | findstr /I "numpy pandas scikit-learn scipy matplotlib seaborn ucimlrepo jupyter"
 numpy
 pandas
-matplotlib
-seaborn
 scikit-learn
 scipy
-jupyter
+matplotlib
+seaborn
 ucimlrepo
-imbalanced-learn
+jupyter
